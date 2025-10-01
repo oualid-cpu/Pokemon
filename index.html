@@ -46,12 +46,32 @@
            class="hover:text-cyan-400 transition">Home</a>
         <a href="pokedex.html"
            class="hover:text-pink-400 transition">Pokédex</a>
-      </div>
+      </div> 
     </div>
   </div>
 </nav>
+<!-- cointainer ith pokemons -->
+<div id="card-container" class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6 p-6 bg-gray-700"></div>
 
-
+  <!-- Card template  -->
+  <div id="card-template" class="hidden">
+  <div class="bg-cyan-500 border-4 border-cyan-500 rounded-xl shadow-md text-black flex flex-col justify-between overflow-hidden">
+    <div class="group hover:grayscale transition duration-300 flex-1">
+      <div class="bg-white flex justify-center p-4">
+        <img class="pokemon-img w-24 h-24" alt="pokemon">
+      </div>
+      <div class="px-4 py-2 group-hover:grayscale transition duration-300">
+        <h3 class="pokemon-name text-lg font-bold">Name</h3>
+        <p class="pokemon-id"># ...</p>
+        <p class="pokemon-height">Height: ...</p>
+        <p class="pokemon-type">Types: ...</p>
+      </div>
+    </div>
+    <button class="w-full bg-white text-purple-600 py-2 font-semibold rounded-b-xl hover:bg-gray-0">
+      Add to Fav 💜
+    </button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>
