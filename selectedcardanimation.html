@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pokeball Warenkorb Effekt</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  .pokeball {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  /* Pokeball Grundform */
+  .pokeball .top {
+    width: 100px;
+    height: 50px;
+    background: red;
+    border: 5px solid black;
+    border-bottom: none;
+    border-radius: 100px 100px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: bottom center;
+    transition: transform 0.5s ease;
+  }
+  .pokeball .bottom {
+    width: 100px;
+    height: 50px;
+    background: white;
+    border: 5px solid black;
+    border-top: none;
+    border-radius: 0 0 100px 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .pokeball .center {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 10;
+  }
+  .pokeball .center::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 12px;
+    height: 12px;
+    background: black;
+    border-radius: 50%;
+  }
+
+  /* Animation: Obere Hälfte klappt zu, Pokeball schließt sich */
+  .pokeball.close .top {
+    transform: rotateX(180deg);
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="pokeball" id="pokeball"></div>
+
+<button id="addToCartBtn">Artikel in Warenkorb</button>
+
+<script>
+  const pokeball = document.getElementById('pokeball');
+  const addToCartBtn = document.getElementById('addToCartBtn');
+
+  // Pokeball HTML Struktur erzeugen
+  pokeball.innerHTML = `
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center"></div>
+  `;
+
+  addToCartBtn.addEventListener('click', () => {
+    // Pokeball schließt sich
+    pokeball.classList.add('close');
+
+    // Nach ca. 1 Sekunde kann man den Pokeball wieder öffnen, wenn gewünscht
+    setTimeout(() => {
+      pokeball.classList.remove('close');
+    }, 1000);
+
+   
+    alert('GOTCHA!!');
+  });
+</script>
+
+</body>
+</html>
