@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let savedPokemons = JSON.parse(localStorage.getItem("caughtPokemons")) || [];
 
-  // 🧩 Show message if no Pokémon are saved
+  // Show message if no Pokémon are saved
   if (savedPokemons.length === 0) {
     container.innerHTML = `
       <p class="text-center text-gray-400 col-span-full">
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 🧱 Function to render Pokémon cards
+  // Function to render Pokémon cards
   function renderPokemons(list) {
     container.innerHTML = ""; // Clear old cards
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // 💾 Save note
+      // Save note
       const noteField = card.querySelector(".note-field");
       const saveBtn = card.querySelector(".save-btn");
       saveBtn.addEventListener("click", () => {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => (saveBtn.textContent = "💾 Save Note"), 1500);
       });
 
-      // ❌ Remove Pokémon
+      // Remove Pokémon
       const removeBtn = card.querySelector(".remove-btn");
       removeBtn.addEventListener("click", () => {
         savedPokemons = savedPokemons.filter(p => p.id.toString() !== pokemon.id.toString());
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔍 Search by name or ID
+  // Search by name or ID
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const query = searchInput.value.trim().toLowerCase();
@@ -100,6 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 🚀 Initial render
+  // Initial render
   renderPokemons(savedPokemons);
 });

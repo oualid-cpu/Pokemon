@@ -6,7 +6,7 @@ const searchInput = document.getElementById("search-input");
 
 let pokemonList = []; // store all Pokémon for searching
 
-// 🧠 Save Pokémon (and note) to localStorage
+//  Save Pokémon (and note) to localStorage
 function savePokemonToLocalStorage(pokemon) {
   const caught = JSON.parse(localStorage.getItem("caughtPokemons")) || [];
   const existing = caught.find(p => p.id === pokemon.id);
@@ -23,7 +23,7 @@ function savePokemonToLocalStorage(pokemon) {
   localStorage.setItem("caughtPokemons", JSON.stringify(caught));
 }
 
-// 🎴 Create Pokémon card from template
+//  Create Pokémon card from template
 function createPokemonCard(pokemonObj) {
   const card = template.cloneNode(true);
 
@@ -51,7 +51,7 @@ function createPokemonCard(pokemonObj) {
   return card;
 }
 
-// 🌐 Fetch Pokémon data
+//  Fetch Pokémon data
 async function loadPokemons(limit = 60) {
   try {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
@@ -79,7 +79,7 @@ async function loadPokemons(limit = 60) {
   }
 }
 
-// 🔍 Search bar logic
+//  Search bar logic
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const query = searchInput.value.trim().toLowerCase();
@@ -98,7 +98,7 @@ searchForm.addEventListener("submit", (e) => {
   searchInput.value = "";
 });
 
-// 💡 Popup using same card style
+//  Popup using same card style
 function showCardPopup(pokemon) {
   const overlay = document.createElement("div");
   overlay.className =
